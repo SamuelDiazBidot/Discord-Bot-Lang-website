@@ -3,9 +3,14 @@ import Browser
 import Html exposing (Html)
 import Element exposing (..)
 import Element.Input exposing (..)
+import Element.Events exposing (..)
 import Element.Background as Background
 import Element.Border as Border
 import Element.Font as Font
+
+blue : Color
+blue =
+    rgb255 0x72 0x89 0xda
 
 white : Color
 white =
@@ -13,7 +18,16 @@ white =
     
 grey : Color
 grey =
-    rgb255 0xd0 0xd0 0xd0
+    rgb255 0x99 0xaa 0xb5
+    
+darkGrey : Color
+darkGrey =
+    rgb255 0x2c 0x2f 0x33
+    
+darkerGrey  : Color
+darkerGrey =
+    rgb255 0x23 0x27 0x2a
+    
 
 content : List String
 content = 
@@ -40,14 +54,22 @@ header =
     row [ width fill
         , paddingXY 0 10
         ]
-        [ el [centerX] (Element.text "Discord bot lang") ]
+        [ el [ centerX
+             , Font.size 52
+             , Font.color white
+             , Font.family
+                 [ Font.typeface "Calibri"
+                 , Font.monospace
+                 ]
+             ] 
+             (Element.text "Discord bot lang") ]
         
 body : Page -> Element Msg
 body page =
     row [ width fill 
         , height fill
         ]
-        [ contentListPanel content "About"
+        [ contentListPanel content (pageToString page)
         , contentPanel page
         ]
         
@@ -56,38 +78,30 @@ footer =
     row [ width fill
         , paddingXY 0 10
         ]
-        [ el [centerX]
-             (Element.text "TODO")
+        [ el 
+            [ centerX
+            , Font.color white
+            , Font.size 12
+            ]
+             (Element.text "Not affiliated with Discord Inc.")
         ]
         
-myButton : String -> Msg -> Element Msg
-myButton routeName msg =
-    button
-        [ Background.color grey
-        , width fill
-        , paddingXY 5 2
-        --, height fill
-        ]
-        { onPress = Just msg
-        , label = Element.text routeName
-        }
-
 contentListPanel : List String -> String -> Element Msg
 contentListPanel contentList activeContent =
     let
         activeContentAttrs =
-            [ Background.color <| rgba255 0 0 0 0.4, Font.bold ]
+            [ Background.color blue, Font.bold, Border.rounded 2]
 
-        contentListAttrs =
-            [ width fill, height <| px 30, paddingXY 10 5 ]
+        contentListAttrs msg =
+            [ width fill, height <| px 30, paddingXY 10 5, onClick msg, Font.color white]
 
-        contentEl content1 =
+        contentEl content1 msg =
             el
                 (if content1 == activeContent then
-                    activeContentAttrs ++ contentListAttrs
+                    activeContentAttrs ++ contentListAttrs msg
 
                  else
-                    contentListAttrs
+                    contentListAttrs msg
                 )
             <|
                 Element.text content1
@@ -96,13 +110,10 @@ contentListPanel contentList activeContent =
             [ height fill 
             , width (fill |> maximum 200)
             , paddingXY 0 10 
+            , Background.color darkerGrey
             , scrollbarY 
-            , Background.color <| rgb255 0xd0 0xd0 0xd0
-            --, Font.color white
             ]
-        <|
-        List.map (\x -> (myButton x) <| ChangeContent <| (stringToPage x) ) contentList
-        --List.map contentEl contentList
+        <| List.map (\x -> contentEl x (ChangeContent <| stringToPage x)) contentList
         
 contentPanel : Page -> Element msg
 contentPanel page =
@@ -125,8 +136,13 @@ contentPanel page =
             [ textColumn 
                 [ width fill 
                 , height fill
+                , paddingXY 10 10
+                , Background.color darkGrey
+                , Border.rounded 2
                 ] 
-                [ paragraph []
+                [ paragraph 
+                    [ Font.color white
+                    ]
                     [ Element.text pageContent ]
                 ]
             ]
@@ -136,6 +152,16 @@ type Page
     | Examples
     | Contact
     
+pageToString : Page -> String
+pageToString page =
+    case page of
+        About ->
+            "About"
+        Examples ->
+            "Examples"
+        Contact ->
+            "Contact"
+
 stringToPage : String -> Page
 stringToPage string =
     case string of
@@ -154,7 +180,7 @@ type alias Model =
 
 init : Model
 init =
-  { currentPage = About }
+  { currentPage = Examples }
   
 type Msg
     = ChangeContent Page
@@ -177,6 +203,7 @@ view model =
     layout [] <|
         column [ width fill
                , height fill
+               , Background.color darkerGrey
                ]
             [ header
             , body model.currentPage

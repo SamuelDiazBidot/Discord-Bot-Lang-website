@@ -110,7 +110,7 @@ contentListPanel contentList activeContent =
             [ height fill 
             , width (fill |> maximum 200)
             , paddingXY 0 10 
-            , Background.color darkerGrey
+            -- , Background.color darkerGrey
             , scrollbarY 
             ]
         <| List.map (\x -> contentEl x (ChangeContent <| stringToPage x)) contentList
@@ -203,7 +203,8 @@ view model =
     layout [] <|
         column [ width fill
                , height fill
-               , Background.color darkerGrey
+            --    , Background.color darkerGrey
+               , Background.image "/discordBackground.png"
                ]
             [ header
             , body model.currentPage

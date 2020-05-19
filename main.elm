@@ -1,5 +1,8 @@
 module Main exposing (..)
+import Browser
+import Html exposing (Html)
 import Element exposing (..)
+import Element.Input exposing (..)
 import Element.Background as Background
 import Element.Border as Border
 import Element.Font as Font
@@ -7,6 +10,10 @@ import Element.Font as Font
 white : Color
 white =
     rgb255 0xff 0xff 0xff
+    
+grey : Color
+grey =
+    rgb255 0xd0 0xd0 0xd0
 
 content : List String
 content = 
@@ -14,21 +21,34 @@ content =
     , "Examples"
     , "Contact"
     ]
+    
+aboutContent = """
+About info here!
+"""
+
+examplesContent = """
+Examples here 
+"""
+
+contactContent = """
+contact info here
+"""
+    
 
 header : Element msg
 header =
     row [ width fill
         , paddingXY 0 10
         ]
-        [ el [centerX] (text "Discord bot lang") ]
+        [ el [centerX] (Element.text "Discord bot lang") ]
         
-body : Element msg
-body =
+body : Page -> Element Msg
+body page =
     row [ width fill 
         , height fill
         ]
         [ contentListPanel content "About"
-        , contentPanel 
+        , contentPanel page
         ]
         
 footer : Element msg
@@ -37,10 +57,22 @@ footer =
         , paddingXY 0 10
         ]
         [ el [centerX]
-             (text "TODO")
+             (Element.text "TODO")
         ]
         
-contentListPanel : List String -> String -> Element msg
+myButton : String -> Msg -> Element Msg
+myButton routeName msg =
+    button
+        [ Background.color grey
+        , width fill
+        , paddingXY 5 2
+        --, height fill
+        ]
+        { onPress = Just msg
+        , label = Element.text routeName
+        }
+
+contentListPanel : List String -> String -> Element Msg
 contentListPanel contentList activeContent =
     let
         activeContentAttrs =
@@ -58,42 +90,96 @@ contentListPanel contentList activeContent =
                     contentListAttrs
                 )
             <|
-                text content1
+                Element.text content1
     in
-    column
-        [ height fill 
-        , width (fill |> maximum 200)
-        , paddingXY 0 10 
-        , scrollbarY 
-        --, Background.color <| rgb255 0xd0 0xd0 0xd0
-        --, Font.color white
-        ]
-    <|
-        List.map contentEl contentList
-        
-contentPanel : Element msg
-contentPanel =
-    row [ width fill
-        , height fill
-        , width <| fillPortion 3
-        , scrollbarY
-        , paddingXY 10 10
-        ]
-        [ textColumn 
-            [ width fill 
-            , height fill
-            ] 
-            [ paragraph []
-                [text """Lorem ipsum dolor sit amet, justo id nam fermentum mauris amet, per leo ac tempor tortor repellat quisque, dapibus gravida dapibus et fames, sollicitudin donec. Leo odio ullamcorper velit quis. Dolor hendrerit fusce ipsum lacus. Mus amet est eveniet vitae, pharetra in vulputate et convallis. Blandit ornare eleifend auctor elementum est orci, tellus sapien ante placerat, ut quam dictum. Nostra justo elit urna nisl purus morbi, enim dolor, mauris cras nonummy id odio dolor, etiam donec aliquam dolor. Nunc sit consectetuer, id non nam feugiat at vel, dis mattis aliquam ante, eu nibh ac odio hymenaeos euismod arcu, lobortis aliquet. Vestibulum ut dui nibh ornare ridiculus neque, nisl wisi quam, adipiscing pellentesque. Tincidunt consequat magna, quam vitae per, ut massa ultrices class proin. Ut nisl consectetuer, morbi lectus, morbi commodo etiam maecenas nunc placerat massa, in suspendisse sed eget sed commodo pulvinar. Sed cursus tempus, magnis dui eu cursus justo tincidunt. Semper at urna fermentum, mauris sagittis tincidunt, elit aliquam, ac faucibus donec consectetuer quis sed orci."""]
+        column
+            [ height fill 
+            , width (fill |> maximum 200)
+            , paddingXY 0 10 
+            , scrollbarY 
+            , Background.color <| rgb255 0xd0 0xd0 0xd0
+            --, Font.color white
             ]
-        ]
+        <|
+        List.map (\x -> (myButton x) <| ChangeContent <| (stringToPage x) ) contentList
+        --List.map contentEl contentList
+        
+contentPanel : Page -> Element msg
+contentPanel page =
+    let 
+        pageContent =
+            case page of
+                About ->
+                    aboutContent
+                Examples ->
+                    examplesContent
+                Contact ->
+                    contactContent
+    in
+        row [ width fill
+            , height fill
+            , width <| fillPortion 3
+            , scrollbarY
+            , paddingXY 10 10
+            ]
+            [ textColumn 
+                [ width fill 
+                , height fill
+                ] 
+                [ paragraph []
+                    [ Element.text pageContent ]
+                ]
+            ]
+        
+type Page
+    = About
+    | Examples
+    | Contact
+    
+stringToPage : String -> Page
+stringToPage string =
+    case string of
+        "About" ->
+            About
+        "Examples" ->
+            Examples
+        "Contact" ->
+            Contact
+        _ ->
+            About
+        
+type alias Model = 
+    { currentPage : Page 
+    }
 
-main = 
+init : Model
+init =
+  { currentPage = About }
+  
+type Msg
+    = ChangeContent Page
+  
+update : Msg -> Model -> Model
+update msg model =
+  case msg of
+    ChangeContent page ->
+        { model | currentPage = page }
+
+main =
+  Browser.sandbox
+    { init = init
+    , update = update
+    , view = view
+    }
+ 
+view :  Model -> Html Msg
+view model = 
     layout [] <|
         column [ width fill
                , height fill
                ]
             [ header
-            , body
+            , body model.currentPage
             , footer
             ]
+    

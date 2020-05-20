@@ -22,20 +22,20 @@ header =
     row [ width fill
         , paddingXY 0 10
         ]
-        [ el [ centerX
-             , Font.size 52
-             , Font.color white
-             , Font.family
-                 [ Font.typeface "Calibri"
-                 , Font.monospace
-                 ]
-             ] 
-             (Element.text "Discord bot lang") ]
+        [ image 
+            [ width <| px 400
+            , height <| px 136
+            , centerX
+            ]
+            { src = "/logo.png", description = "logo"}
+        ]
         
 body : Page -> Element Msg
 body page =
     row [ width fill 
         , height fill
+        , padding 10
+        , spacing 10
         ]
         [ contentListPanel content (pageToString page)
         , contentPanel page
@@ -94,13 +94,14 @@ contentPanel page =
                 Contact ->
                     contactContent
     in
-        column [ width fill
-            , height fill
+        column 
+            [ height fill
             , width <| fillPortion 3
             , scrollbarY
-            , paddingXY 10 10
+            , padding 10
+            , spacing 10
             , Background.color darkGrey
-            , Border.rounded 2
+            , Border.rounded 10
             ]
             pageContent
         
@@ -137,7 +138,7 @@ type alias Model =
 
 init : Model
 init =
-  { currentPage = Examples }
+  { currentPage = About }
   
 type Msg
     = ChangeContent Page

@@ -8,7 +8,7 @@ import Element.Background as Background
 contentAttributes =
     [ width fill 
     , height fill
-    , paddingXY 10 10
+    , paddingXY 0 10
     ] 
 
 aboutContent = 

@@ -1,4 +1,6 @@
 module Main exposing (..)
+import Content exposing (..)
+import Pallete exposing (..)
 import Browser
 import Html exposing (Html)
 import Element exposing (..)
@@ -8,27 +10,6 @@ import Element.Background as Background
 import Element.Border as Border
 import Element.Font as Font
 
-blue : Color
-blue =
-    rgb255 0x72 0x89 0xda
-
-white : Color
-white =
-    rgb255 0xff 0xff 0xff
-    
-grey : Color
-grey =
-    rgb255 0x99 0xaa 0xb5
-    
-darkGrey : Color
-darkGrey =
-    rgb255 0x2c 0x2f 0x33
-    
-darkerGrey  : Color
-darkerGrey =
-    rgb255 0x23 0x27 0x2a
-    
-
 content : List String
 content = 
     [ "About"
@@ -36,19 +17,6 @@ content =
     , "Contact"
     ]
     
-aboutContent = """
-About info here!
-"""
-
-examplesContent = """
-Examples here 
-"""
-
-contactContent = """
-contact info here
-"""
-    
-
 header : Element msg
 header =
     row [ width fill
@@ -110,7 +78,6 @@ contentListPanel contentList activeContent =
             [ height fill 
             , width (fill |> maximum 200)
             , paddingXY 0 10 
-            -- , Background.color darkerGrey
             , scrollbarY 
             ]
         <| List.map (\x -> contentEl x (ChangeContent <| stringToPage x)) contentList
@@ -127,25 +94,15 @@ contentPanel page =
                 Contact ->
                     contactContent
     in
-        row [ width fill
+        column [ width fill
             , height fill
             , width <| fillPortion 3
             , scrollbarY
             , paddingXY 10 10
+            , Background.color darkGrey
+            , Border.rounded 2
             ]
-            [ textColumn 
-                [ width fill 
-                , height fill
-                , paddingXY 10 10
-                , Background.color darkGrey
-                , Border.rounded 2
-                ] 
-                [ paragraph 
-                    [ Font.color white
-                    ]
-                    [ Element.text pageContent ]
-                ]
-            ]
+            pageContent
         
 type Page
     = About
@@ -203,11 +160,9 @@ view model =
     layout [] <|
         column [ width fill
                , height fill
-            --    , Background.color darkerGrey
                , Background.image "/discordBackground.png"
                ]
             [ header
             , body model.currentPage
             , footer
             ]
-    

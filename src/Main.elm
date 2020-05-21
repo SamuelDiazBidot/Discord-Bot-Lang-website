@@ -12,7 +12,8 @@ import Element.Font as Font
 
 content : List String
 content = 
-    [ "About"
+    [ "Home"
+    , "About"
     , "Examples"
     , "Contact"
     ]
@@ -20,7 +21,7 @@ content =
 header : Element msg
 header =
     row [ width fill
-        , paddingXY 0 10
+        , paddingXY 10 10
         ]
         [ image 
             [ width <| px 400
@@ -28,6 +29,17 @@ header =
             , centerX
             ]
             { src = "/logo.png", description = "logo"}
+        , link
+            []
+            { url = "https://github.com/SamuelDiazBidot/Discord-Bot-Lang"
+            , label = 
+                image
+                    [ width <| px 50 
+                    , height <| px 50
+                    , alignRight
+                    ]
+                    {src = "/github-logo.png", description = "github repo link"}
+            }
         ]
         
 body : Page -> Element Msg
@@ -58,10 +70,10 @@ contentListPanel : List String -> String -> Element Msg
 contentListPanel contentList activeContent =
     let
         activeContentAttrs =
-            [ Background.color blue, Font.bold, Border.rounded 2]
+            [ Background.color blue, Font.bold]
 
         contentListAttrs msg =
-            [ width fill, height <| px 30, paddingXY 10 5, onClick msg, Font.color white]
+            [ width fill, height <| px 30, paddingXY 10 5, onClick msg, Font.color white, Border.rounded 2, mouseOver [ Background.color grey ]]
 
         contentEl content1 msg =
             el
@@ -87,6 +99,8 @@ contentPanel page =
     let 
         pageContent =
             case page of
+                Home ->
+                    homeContent
                 About ->
                     aboutContent
                 Examples ->
@@ -106,13 +120,16 @@ contentPanel page =
             pageContent
         
 type Page
-    = About
+    = Home
+    | About
     | Examples
     | Contact
     
 pageToString : Page -> String
 pageToString page =
     case page of
+        Home ->
+            "Home"
         About ->
             "About"
         Examples ->
@@ -123,6 +140,8 @@ pageToString page =
 stringToPage : String -> Page
 stringToPage string =
     case string of
+        "Home" ->
+            Home
         "About" ->
             About
         "Examples" ->

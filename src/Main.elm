@@ -28,7 +28,7 @@ header =
             , height <| px 136
             , centerX
             ]
-            { src = "/logo.png", description = "logo"}
+            { src = "./logo.png", description = "logo"}
         , link
             []
             { url = "https://github.com/SamuelDiazBidot/Discord-Bot-Lang"
@@ -38,7 +38,7 @@ header =
                     , height <| px 50
                     , alignRight
                     ]
-                    {src = "/github-logo.png", description = "github repo link"}
+                    {src = "./github-logo.png", description = "github repo link"}
             }
         ]
         
@@ -180,7 +180,7 @@ view model =
     layout [] <|
         column [ width fill
                , height fill
-               , Background.image "/discordBackground.png"
+               , Background.image "./discordBackground.png"
                ]
             [ header
             , body model.currentPage

@@ -15,6 +15,7 @@ content =
     [ "Home"
     , "About"
     , "Examples"
+    , "Tutorial"
     , "Contact"
     ]
     
@@ -51,6 +52,7 @@ body page =
         ]
         [ contentListPanel content (pageToString page)
         , contentPanel page
+        , el [width (fill |> maximum 200 |> minimum 0)] <| Element.text ""
         ]
         
 footer : Element msg
@@ -105,6 +107,8 @@ contentPanel page =
                     aboutContent
                 Examples ->
                     examplesContent
+                Tutorial ->
+                    tutorialContent
                 Contact ->
                     contactContent
     in
@@ -123,6 +127,7 @@ type Page
     = Home
     | About
     | Examples
+    | Tutorial
     | Contact
     
 pageToString : Page -> String
@@ -134,6 +139,8 @@ pageToString page =
             "About"
         Examples ->
             "Examples"
+        Tutorial ->
+            "Tutorial"
         Contact ->
             "Contact"
 
@@ -146,6 +153,8 @@ stringToPage string =
             About
         "Examples" ->
             Examples
+        "Tutorial" ->
+            Tutorial
         "Contact" ->
             Contact
         _ ->

@@ -5206,7 +5206,7 @@ var $author$project$Main$update = F2(
 			{aq: page});
 	});
 var $author$project$Main$content = _List_fromArray(
-	['Home', 'About', 'Examples', 'Contact']);
+	['Home', 'About', 'Examples', 'Tutorial', 'Contact']);
 var $author$project$Main$ChangeContent = $elm$core$Basics$identity;
 var $mdgriffith$elm_ui$Internal$Model$Rgba = F4(
 	function (a, b, c, d) {
@@ -11069,9 +11069,10 @@ var $mdgriffith$elm_ui$Element$Border$rounded = function (radius) {
 };
 var $mdgriffith$elm_ui$Internal$Flag$overflow = $mdgriffith$elm_ui$Internal$Flag$flag(20);
 var $mdgriffith$elm_ui$Element$scrollbarY = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$overflow, $mdgriffith$elm_ui$Internal$Style$classes.cQ);
-var $author$project$Main$Contact = 3;
+var $author$project$Main$Contact = 4;
 var $author$project$Main$Examples = 2;
 var $author$project$Main$Home = 0;
+var $author$project$Main$Tutorial = 3;
 var $author$project$Main$stringToPage = function (string) {
 	switch (string) {
 		case 'Home':
@@ -11080,8 +11081,10 @@ var $author$project$Main$stringToPage = function (string) {
 			return 1;
 		case 'Examples':
 			return 2;
-		case 'Contact':
+		case 'Tutorial':
 			return 3;
+		case 'Contact':
+			return 4;
 		default:
 			return 1;
 	}
@@ -11151,6 +11154,57 @@ var $author$project$Content$contentAttributes = _List_fromArray(
 		A2($mdgriffith$elm_ui$Element$paddingXY, 0, 10)
 	]);
 var $mdgriffith$elm_ui$Element$Font$heavy = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$fontWeight, $mdgriffith$elm_ui$Internal$Style$classes.c4);
+var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
+var $elm$html$Html$Attributes$src = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'src',
+		_VirtualDom_noJavaScriptOrHtmlUri(url));
+};
+var $mdgriffith$elm_ui$Element$image = F2(
+	function (attrs, _v0) {
+		var src = _v0.bu;
+		var description = _v0.aX;
+		var imageAttributes = A2(
+			$elm$core$List$filter,
+			function (a) {
+				switch (a.$) {
+					case 7:
+						return true;
+					case 8:
+						return true;
+					default:
+						return false;
+				}
+			},
+			attrs);
+		return A4(
+			$mdgriffith$elm_ui$Internal$Model$element,
+			$mdgriffith$elm_ui$Internal$Model$asEl,
+			$mdgriffith$elm_ui$Internal$Model$div,
+			A2(
+				$elm$core$List$cons,
+				$mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.cp),
+				attrs),
+			$mdgriffith$elm_ui$Internal$Model$Unkeyed(
+				_List_fromArray(
+					[
+						A4(
+						$mdgriffith$elm_ui$Internal$Model$element,
+						$mdgriffith$elm_ui$Internal$Model$asEl,
+						$mdgriffith$elm_ui$Internal$Model$NodeName('img'),
+						_Utils_ap(
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Internal$Model$Attr(
+									$elm$html$Html$Attributes$src(src)),
+									$mdgriffith$elm_ui$Internal$Model$Attr(
+									$elm$html$Html$Attributes$alt(description))
+								]),
+							imageAttributes),
+						$mdgriffith$elm_ui$Internal$Model$Unkeyed(_List_Nil))
+					])));
+	});
 var $mdgriffith$elm_ui$Internal$Model$Paragraph = {$: 9};
 var $mdgriffith$elm_ui$Internal$Model$SpacingStyle = F3(
 	function (a, b, c) {
@@ -11266,7 +11320,7 @@ var $author$project$Content$aboutContent = _List_fromArray(
 				_List_fromArray(
 					[
 						$mdgriffith$elm_ui$Element$Font$color($author$project$Pallete$white),
-						A2($mdgriffith$elm_ui$Element$paddingXY, 60, 0)
+						A2($mdgriffith$elm_ui$Element$paddingXY, 60, 10)
 					]),
 				_List_fromArray(
 					[
@@ -11281,58 +11335,79 @@ var $author$project$Content$aboutContent = _List_fromArray(
 						A2($mdgriffith$elm_ui$Element$paddingXY, 40, 0)
 					]),
 				_List_fromArray(
-					['Closure support', 'Python3 core library', 'Easy discord bot prototyping', 'Auto-generated command error handling']))
-			]))
-	]);
-var $mdgriffith$elm_ui$Internal$Model$AsTextColumn = 5;
-var $mdgriffith$elm_ui$Internal$Model$asTextColumn = 5;
-var $mdgriffith$elm_ui$Internal$Model$Min = F2(
-	function (a, b) {
-		return {$: 3, a: a, b: b};
-	});
-var $mdgriffith$elm_ui$Element$minimum = F2(
-	function (i, l) {
-		return A2($mdgriffith$elm_ui$Internal$Model$Min, i, l);
-	});
-var $mdgriffith$elm_ui$Element$textColumn = F2(
-	function (attrs, children) {
-		return A4(
-			$mdgriffith$elm_ui$Internal$Model$element,
-			$mdgriffith$elm_ui$Internal$Model$asTextColumn,
-			$mdgriffith$elm_ui$Internal$Model$div,
-			A2(
-				$elm$core$List$cons,
-				$mdgriffith$elm_ui$Element$width(
-					A2(
-						$mdgriffith$elm_ui$Element$maximum,
-						750,
-						A2($mdgriffith$elm_ui$Element$minimum, 500, $mdgriffith$elm_ui$Element$fill))),
-				attrs),
-			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
-	});
-var $author$project$Content$contactContent = _List_fromArray(
-	[
-		A2(
-		$mdgriffith$elm_ui$Element$textColumn,
-		$author$project$Content$contentAttributes,
-		_List_fromArray(
-			[
+					['Closure support', 'Python3 core library', 'Easy discord bot prototyping', 'Auto-generated command error handling'])),
+				$author$project$Content$section('How it works'),
 				A2(
 				$mdgriffith$elm_ui$Element$paragraph,
 				_List_fromArray(
 					[
-						$mdgriffith$elm_ui$Element$Font$color($author$project$Pallete$white)
+						$mdgriffith$elm_ui$Element$Font$color($author$project$Pallete$white),
+						A2($mdgriffith$elm_ui$Element$paddingXY, 60, 10)
 					]),
 				_List_fromArray(
 					[
-						$mdgriffith$elm_ui$Element$text('sdd')
-					]))
+						$mdgriffith$elm_ui$Element$text('\n                Discord bot lang\'s interpreter takes an input file and procceses its contents to generate intermidiate code.\n                The lexer divides the contents of the input file into tokens. Tokens are categorized as keywords such as \'if\' and \'else\', types such as \'Integers\' and symbols such as \'+\'.\n                The tokens are then grouped tougether to fit the grammar rules. The end result of parsing the tokens is a asbstract syntax tree, AST for short.\n                Using the generated AST the interpreter can generate python code. \n                Finaly the interpreter runs the generated python code using Discord.py, a library that wraps the discod api.\n                The following flow diagram show the proccess.\n                ')
+					])),
+				A2(
+				$mdgriffith$elm_ui$Element$image,
+				_List_fromArray(
+					[
+						A2($mdgriffith$elm_ui$Element$paddingXY, 60, 10)
+					]),
+				{aX: 'Diagram', bu: './Diagram.png'})
 			]))
 	]);
-var $author$project$Pallete$darkGrey = A3($mdgriffith$elm_ui$Element$rgb255, 44, 47, 51);
-var $elm$core$Tuple$pair = F2(
-	function (a, b) {
-		return _Utils_Tuple2(a, b);
+var $mdgriffith$elm_ui$Internal$Model$CenterY = 1;
+var $mdgriffith$elm_ui$Element$centerY = $mdgriffith$elm_ui$Internal$Model$AlignY(1);
+var $mdgriffith$elm_ui$Element$clip = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$overflow, $mdgriffith$elm_ui$Internal$Style$classes.b7);
+var $author$project$Content$contactInfo = F4(
+	function (imgLocation, imgDescription, name, email) {
+		return A2(
+			$mdgriffith$elm_ui$Element$column,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$centerX,
+					$mdgriffith$elm_ui$Element$centerY,
+					$mdgriffith$elm_ui$Element$spacing(20)
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$image,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$Border$rounded(200),
+							$mdgriffith$elm_ui$Element$centerX,
+							$mdgriffith$elm_ui$Element$centerY,
+							$mdgriffith$elm_ui$Element$clip
+						]),
+					{aX: imgDescription, bu: imgLocation}),
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[$mdgriffith$elm_ui$Element$centerX]),
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$el,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$Font$color($author$project$Pallete$white),
+									$mdgriffith$elm_ui$Element$Font$heavy,
+									$mdgriffith$elm_ui$Element$centerX
+								]),
+							$mdgriffith$elm_ui$Element$text(name)),
+							A2(
+							$mdgriffith$elm_ui$Element$el,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$Font$color($author$project$Pallete$white),
+									$mdgriffith$elm_ui$Element$Font$heavy,
+									$mdgriffith$elm_ui$Element$centerX
+								]),
+							$mdgriffith$elm_ui$Element$text(email))
+						]))
+				]));
 	});
 var $mdgriffith$elm_ui$Internal$Model$AsRow = 0;
 var $mdgriffith$elm_ui$Internal$Model$asRow = 0;
@@ -11353,6 +11428,36 @@ var $mdgriffith$elm_ui$Element$row = F2(
 						$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$shrink),
 						attrs))),
 			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
+	});
+var $author$project$Content$contactContent = _List_fromArray(
+	[
+		A2(
+		$mdgriffith$elm_ui$Element$row,
+		_Utils_ap(
+			$author$project$Content$contentAttributes,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$spacing(150),
+					$mdgriffith$elm_ui$Element$centerY
+				])),
+		_List_fromArray(
+			[
+				A4($author$project$Content$contactInfo, './portrait1.jpg', 'portrait1', 'Samuel Diaz', 'samuel.diaz9@upr.edu'),
+				A4($author$project$Content$contactInfo, './portrait2.jpeg', 'portrait2', 'Brandon Cobo', 'brandon.cobo@upr.edu')
+			]))
+	]);
+var $author$project$Pallete$darkGrey = A3($mdgriffith$elm_ui$Element$rgb255, 44, 47, 51);
+var $author$project$Pallete$darkerGrey = A3($mdgriffith$elm_ui$Element$rgb255, 35, 39, 42);
+var $author$project$Content$codeBlockAttributes = _List_fromArray(
+	[
+		A2($mdgriffith$elm_ui$Element$paddingXY, 60, 10),
+		$mdgriffith$elm_ui$Element$Background$color($author$project$Pallete$darkerGrey),
+		$mdgriffith$elm_ui$Element$Border$rounded(10),
+		$mdgriffith$elm_ui$Element$centerX
+	]);
+var $elm$core$Tuple$pair = F2(
+	function (a, b) {
+		return _Utils_Tuple2(a, b);
 	});
 var $author$project$Content$codeLine = F2(
 	function (colors, strings) {
@@ -11385,11 +11490,16 @@ var $author$project$Content$examplesContent = _List_fromArray(
 			[
 				$author$project$Content$section('Echo command bot'),
 				A2(
-				$mdgriffith$elm_ui$Element$column,
+				$mdgriffith$elm_ui$Element$el,
 				_List_fromArray(
 					[
+						$mdgriffith$elm_ui$Element$Font$color($author$project$Pallete$white),
 						A2($mdgriffith$elm_ui$Element$paddingXY, 60, 10)
 					]),
+				$mdgriffith$elm_ui$Element$text('The following code is a bot that echoes its input back to the user. Once the bot is running by typing \'-echo hello\' the bot responds by returning \'hello\'.')),
+				A2(
+				$mdgriffith$elm_ui$Element$column,
+				$author$project$Content$codeBlockAttributes,
 				_List_fromArray(
 					[
 						A2(
@@ -11425,11 +11535,19 @@ var $author$project$Content$examplesContent = _List_fromArray(
 					])),
 				$author$project$Content$section('Counter bot'),
 				A2(
-				$mdgriffith$elm_ui$Element$column,
+				$mdgriffith$elm_ui$Element$paragraph,
 				_List_fromArray(
 					[
+						$mdgriffith$elm_ui$Element$Font$color($author$project$Pallete$white),
 						A2($mdgriffith$elm_ui$Element$paddingXY, 60, 10)
 					]),
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$text('\n                The following code is a bot that acts like a counter. \n                It has tree commands, one increments the counter, another one decrements it and the last one show the counter amount.\n                ')
+					])),
+				A2(
+				$mdgriffith$elm_ui$Element$column,
+				$author$project$Content$codeBlockAttributes,
 				_List_fromArray(
 					[
 						A2(
@@ -11544,6 +11662,32 @@ var $author$project$Content$examplesContent = _List_fromArray(
 			]))
 	]);
 var $mdgriffith$elm_ui$Element$fillPortion = $mdgriffith$elm_ui$Internal$Model$Fill;
+var $mdgriffith$elm_ui$Internal$Model$AsTextColumn = 5;
+var $mdgriffith$elm_ui$Internal$Model$asTextColumn = 5;
+var $mdgriffith$elm_ui$Internal$Model$Min = F2(
+	function (a, b) {
+		return {$: 3, a: a, b: b};
+	});
+var $mdgriffith$elm_ui$Element$minimum = F2(
+	function (i, l) {
+		return A2($mdgriffith$elm_ui$Internal$Model$Min, i, l);
+	});
+var $mdgriffith$elm_ui$Element$textColumn = F2(
+	function (attrs, children) {
+		return A4(
+			$mdgriffith$elm_ui$Internal$Model$element,
+			$mdgriffith$elm_ui$Internal$Model$asTextColumn,
+			$mdgriffith$elm_ui$Internal$Model$div,
+			A2(
+				$elm$core$List$cons,
+				$mdgriffith$elm_ui$Element$width(
+					A2(
+						$mdgriffith$elm_ui$Element$maximum,
+						750,
+						A2($mdgriffith$elm_ui$Element$minimum, 500, $mdgriffith$elm_ui$Element$fill))),
+				attrs),
+			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
+	});
 var $author$project$Content$homeContent = _List_fromArray(
 	[
 		A2(
@@ -11575,6 +11719,25 @@ var $mdgriffith$elm_ui$Element$padding = function (x) {
 			x,
 			x));
 };
+var $author$project$Content$tutorialContent = _List_fromArray(
+	[
+		A2(
+		$mdgriffith$elm_ui$Element$textColumn,
+		$author$project$Content$contentAttributes,
+		_List_fromArray(
+			[
+				A2(
+				$mdgriffith$elm_ui$Element$paragraph,
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$Font$color($author$project$Pallete$white)
+					]),
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$text('sdd')
+					]))
+			]))
+	]);
 var $author$project$Main$contentPanel = function (page) {
 	var pageContent = function () {
 		switch (page) {
@@ -11584,6 +11747,8 @@ var $author$project$Main$contentPanel = function (page) {
 				return $author$project$Content$aboutContent;
 			case 2:
 				return $author$project$Content$examplesContent;
+			case 3:
+				return $author$project$Content$tutorialContent;
 			default:
 				return $author$project$Content$contactContent;
 		}
@@ -11611,6 +11776,8 @@ var $author$project$Main$pageToString = function (page) {
 			return 'About';
 		case 2:
 			return 'Examples';
+		case 3:
+			return 'Tutorial';
 		default:
 			return 'Contact';
 	}
@@ -11631,7 +11798,18 @@ var $author$project$Main$body = function (page) {
 				$author$project$Main$contentListPanel,
 				$author$project$Main$content,
 				$author$project$Main$pageToString(page)),
-				$author$project$Main$contentPanel(page)
+				$author$project$Main$contentPanel(page),
+				A2(
+				$mdgriffith$elm_ui$Element$el,
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$width(
+						A2(
+							$mdgriffith$elm_ui$Element$minimum,
+							0,
+							A2($mdgriffith$elm_ui$Element$maximum, 200, $mdgriffith$elm_ui$Element$fill)))
+					]),
+				$mdgriffith$elm_ui$Element$text(''))
 			]));
 };
 var $author$project$Main$footer = A2(
@@ -11655,57 +11833,6 @@ var $author$project$Main$footer = A2(
 		]));
 var $mdgriffith$elm_ui$Internal$Model$Right = 2;
 var $mdgriffith$elm_ui$Element$alignRight = $mdgriffith$elm_ui$Internal$Model$AlignX(2);
-var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
-var $elm$html$Html$Attributes$src = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'src',
-		_VirtualDom_noJavaScriptOrHtmlUri(url));
-};
-var $mdgriffith$elm_ui$Element$image = F2(
-	function (attrs, _v0) {
-		var src = _v0.bu;
-		var description = _v0.aX;
-		var imageAttributes = A2(
-			$elm$core$List$filter,
-			function (a) {
-				switch (a.$) {
-					case 7:
-						return true;
-					case 8:
-						return true;
-					default:
-						return false;
-				}
-			},
-			attrs);
-		return A4(
-			$mdgriffith$elm_ui$Internal$Model$element,
-			$mdgriffith$elm_ui$Internal$Model$asEl,
-			$mdgriffith$elm_ui$Internal$Model$div,
-			A2(
-				$elm$core$List$cons,
-				$mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.cp),
-				attrs),
-			$mdgriffith$elm_ui$Internal$Model$Unkeyed(
-				_List_fromArray(
-					[
-						A4(
-						$mdgriffith$elm_ui$Internal$Model$element,
-						$mdgriffith$elm_ui$Internal$Model$asEl,
-						$mdgriffith$elm_ui$Internal$Model$NodeName('img'),
-						_Utils_ap(
-							_List_fromArray(
-								[
-									$mdgriffith$elm_ui$Internal$Model$Attr(
-									$elm$html$Html$Attributes$src(src)),
-									$mdgriffith$elm_ui$Internal$Model$Attr(
-									$elm$html$Html$Attributes$alt(description))
-								]),
-							imageAttributes),
-						$mdgriffith$elm_ui$Internal$Model$Unkeyed(_List_Nil))
-					])));
-	});
 var $elm$html$Html$Attributes$href = function (url) {
 	return A2(
 		$elm$html$Html$Attributes$stringProperty,

@@ -222,12 +222,14 @@ tutorialContent =
             , codeLine [white, green] ["list = ", "[1,2,4]"]
             , codeLine [white, green] ["map = ", "{'a' : 1, 'b' : 2}"]
             ]
-        , section "flow expressions"
+        , section "Flow expressions"
         , paragraph
             [ Font.color white, paddingXY 60 10 ]
             [ Element.text
                 """
-                Discord bot lang supports the following flow expressions: If..else, try..except and for..in loops.
+                Discord bot lang supports the following flow expressions: If..else, try..except and for..in loops. 
+                If expression dont need parentheses around the conditional statement.
+                For loops bind an id to the current element in a iterator. The iterator in a for loop can be the range expression defined by two dots in between two integers, or a list.
                 """
             ]
         , column 

@@ -186,7 +186,7 @@ main =
  
 view :  Model -> Html Msg
 view model = 
-    layout [] <|
+    layout [height fill, scrollbarY] <|
         column [ width fill
                , height fill
                , scrollbarY

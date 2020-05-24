@@ -1,6 +1,9 @@
 module Pallete exposing (..)
 import Element exposing (Color, rgb255)
 
+yellow : Color
+yellow =
+    rgb255 0xdb 0xbe 0x44
 green : Color
 green =
     rgb255 0x25 0xc1 0x96

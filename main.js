@@ -4392,8 +4392,8 @@ var _Bitwise_shiftRightZfBy = F2(function(offset, a)
 {
 	return a >>> offset;
 });
-var $author$project$Main$About = 1;
-var $author$project$Main$init = {aq: 1};
+var $author$project$Main$Home = 0;
+var $author$project$Main$init = {aq: 0};
 var $elm$core$Basics$EQ = 1;
 var $elm$core$Basics$GT = 2;
 var $elm$core$Basics$LT = 0;
@@ -11069,9 +11069,9 @@ var $mdgriffith$elm_ui$Element$Border$rounded = function (radius) {
 };
 var $mdgriffith$elm_ui$Internal$Flag$overflow = $mdgriffith$elm_ui$Internal$Flag$flag(20);
 var $mdgriffith$elm_ui$Element$scrollbarY = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$overflow, $mdgriffith$elm_ui$Internal$Style$classes.cQ);
+var $author$project$Main$About = 1;
 var $author$project$Main$Contact = 4;
 var $author$project$Main$Examples = 2;
-var $author$project$Main$Home = 0;
 var $author$project$Main$Tutorial = 3;
 var $author$project$Main$stringToPage = function (string) {
 	switch (string) {
@@ -11151,7 +11151,8 @@ var $mdgriffith$elm_ui$Element$centerX = $mdgriffith$elm_ui$Internal$Model$Align
 var $author$project$Content$contentAttributes = _List_fromArray(
 	[
 		$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-		A2($mdgriffith$elm_ui$Element$paddingXY, 0, 10)
+		A2($mdgriffith$elm_ui$Element$paddingXY, 0, 10),
+		$mdgriffith$elm_ui$Element$scrollbarY
 	]);
 var $mdgriffith$elm_ui$Element$Font$heavy = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$fontWeight, $mdgriffith$elm_ui$Internal$Style$classes.c4);
 var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
@@ -11719,22 +11720,283 @@ var $mdgriffith$elm_ui$Element$padding = function (x) {
 			x,
 			x));
 };
+var $author$project$Pallete$yellow = A3($mdgriffith$elm_ui$Element$rgb255, 219, 190, 68);
 var $author$project$Content$tutorialContent = _List_fromArray(
 	[
 		A2(
-		$mdgriffith$elm_ui$Element$textColumn,
+		$mdgriffith$elm_ui$Element$column,
 		$author$project$Content$contentAttributes,
 		_List_fromArray(
 			[
+				$author$project$Content$section('Basic program structure'),
 				A2(
 				$mdgriffith$elm_ui$Element$paragraph,
 				_List_fromArray(
 					[
-						$mdgriffith$elm_ui$Element$Font$color($author$project$Pallete$white)
+						$mdgriffith$elm_ui$Element$Font$color($author$project$Pallete$white),
+						A2($mdgriffith$elm_ui$Element$paddingXY, 60, 10)
 					]),
 				_List_fromArray(
 					[
-						$mdgriffith$elm_ui$Element$text('sdd')
+						$mdgriffith$elm_ui$Element$text('\n                A functional program is coposed of 2 parts, a token and a command. Only one token is needed to write a functional program. \n                The token must be a valid. To obtain a valid token refer to the dicord developer portal. \n                At least one comman is needed, but you can use as many commands as you like.\n                A program also can be composed of variables and functions but these are optional.\n                ')
+					])),
+				A2(
+				$mdgriffith$elm_ui$Element$column,
+				$author$project$Content$codeBlockAttributes,
+				_List_fromArray(
+					[
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$purple, $author$project$Pallete$white, $author$project$Pallete$green, $author$project$Pallete$white]),
+						_List_fromArray(
+							['token', '(', '\'NzAxODA3MzU4NjYxMDk5NTgy.XrMWEA.D10sg4j1LjIhLJycz_rzaZVqr-4\'', ')'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white]),
+						_List_fromArray(
+							[''])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$purple, $author$project$Pallete$white]),
+						_List_fromArray(
+							['command ', 'myCommand() {'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white]),
+						_List_fromArray(
+							['}']))
+					])),
+				$author$project$Content$section('Variables and simple data structures'),
+				A2(
+				$mdgriffith$elm_ui$Element$paragraph,
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$Font$color($author$project$Pallete$white),
+						A2($mdgriffith$elm_ui$Element$paddingXY, 60, 10)
+					]),
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$text('\n                Variables can be declared by binding an id to its value using the \'=\' sign.\n                Discord bot lang has support for the following types: Integer, Float, Boolean ans String.\n                Discord bot also supports basic data structures such as lists and hashmaps.  \n                ')
+					])),
+				A2(
+				$mdgriffith$elm_ui$Element$column,
+				$author$project$Content$codeBlockAttributes,
+				_List_fromArray(
+					[
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white, $author$project$Pallete$green]),
+						_List_fromArray(
+							['x = ', '4'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white, $author$project$Pallete$green]),
+						_List_fromArray(
+							['y = ', 'true'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white, $author$project$Pallete$green]),
+						_List_fromArray(
+							['list = ', '[1,2,4]'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white, $author$project$Pallete$green]),
+						_List_fromArray(
+							['map = ', '{\'a\' : 1, \'b\' : 2}']))
+					])),
+				$author$project$Content$section('flow expressions'),
+				A2(
+				$mdgriffith$elm_ui$Element$paragraph,
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$Font$color($author$project$Pallete$white),
+						A2($mdgriffith$elm_ui$Element$paddingXY, 60, 10)
+					]),
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$text('\n                Discord bot lang supports the following flow expressions: If..else, try..except and for..in loops.\n                ')
+					])),
+				A2(
+				$mdgriffith$elm_ui$Element$column,
+				$author$project$Content$codeBlockAttributes,
+				_List_fromArray(
+					[
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$pink, $author$project$Pallete$white]),
+						_List_fromArray(
+							['if ', 'x > 10 {'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$yellow]),
+						_List_fromArray(
+							['\t~ Body'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white, $author$project$Pallete$pink, $author$project$Pallete$white]),
+						_List_fromArray(
+							['} ', 'else ', '{'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$yellow]),
+						_List_fromArray(
+							['\t~ Body'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white]),
+						_List_fromArray(
+							['}'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white]),
+						_List_fromArray(
+							[''])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$pink, $author$project$Pallete$white]),
+						_List_fromArray(
+							['try ', '{'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$yellow]),
+						_List_fromArray(
+							['\t~ Body'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white, $author$project$Pallete$pink, $author$project$Pallete$white]),
+						_List_fromArray(
+							['} ', 'except ', '{'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$yellow]),
+						_List_fromArray(
+							['\t~ Body'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white]),
+						_List_fromArray(
+							['}'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white]),
+						_List_fromArray(
+							[''])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$pink, $author$project$Pallete$white, $author$project$Pallete$pink, $author$project$Pallete$white]),
+						_List_fromArray(
+							['for ', 'x ', 'in ', '0..10 {'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$yellow]),
+						_List_fromArray(
+							['\t~ Body'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white]),
+						_List_fromArray(
+							['}']))
+					])),
+				$author$project$Content$section('Functions and function calls'),
+				A2(
+				$mdgriffith$elm_ui$Element$paragraph,
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$Font$color($author$project$Pallete$white),
+						A2($mdgriffith$elm_ui$Element$paddingXY, 60, 10)
+					]),
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$text('\n                Functions and commands are very similar. Both can have variables, function calls, and flow expressions. Discord bot lang has support for recursive function calls. \n                Only functions can be called in a program, commands cannot be called. To declare a function simply use the \'fn\' keyword. \n                Discord bot lang can call functions from python\'s core library by adding a dot in front of a function call.\n                Discord bot lang has some pre-declared functions such as token and send.\n                In the following example we declare a function called sum, that returns the sum of two integers.\n                ')
+					])),
+				A2(
+				$mdgriffith$elm_ui$Element$column,
+				$author$project$Content$codeBlockAttributes,
+				_List_fromArray(
+					[
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$purple, $author$project$Pallete$white]),
+						_List_fromArray(
+							['fn ', 'myFunction(x,y) {'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$pink, $author$project$Pallete$white]),
+						_List_fromArray(
+							['\ttry', '{'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white, $author$project$Pallete$purple, $author$project$Pallete$white]),
+						_List_fromArray(
+							['\t\tx = ', '.int', '(x)'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white, $author$project$Pallete$purple, $author$project$Pallete$white]),
+						_List_fromArray(
+							['\t\ty = ', '.int', '(y)'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white]),
+						_List_fromArray(
+							['\t\tresult = x + y'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$pink, $author$project$Pallete$white]),
+						_List_fromArray(
+							['\t\treturn ', 'result'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white, $author$project$Pallete$pink, $author$project$Pallete$white]),
+						_List_fromArray(
+							['\t} ', 'except', '{'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$purple, $author$project$Pallete$white, $author$project$Pallete$green, $author$project$Pallete$white]),
+						_List_fromArray(
+							['\t\t.print', '(', '\'An Error occured\'', ')'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white]),
+						_List_fromArray(
+							['\t}'])),
+						A2(
+						$author$project$Content$codeLine,
+						_List_fromArray(
+							[$author$project$Pallete$white]),
+						_List_fromArray(
+							['}']))
 					]))
 			]))
 	]);
@@ -11760,7 +12022,6 @@ var $author$project$Main$contentPanel = function (page) {
 				$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$fill),
 				$mdgriffith$elm_ui$Element$width(
 				$mdgriffith$elm_ui$Element$fillPortion(3)),
-				$mdgriffith$elm_ui$Element$scrollbarY,
 				$mdgriffith$elm_ui$Element$padding(10),
 				$mdgriffith$elm_ui$Element$spacing(10),
 				$mdgriffith$elm_ui$Element$Background$color($author$project$Pallete$darkGrey),
@@ -11789,6 +12050,7 @@ var $author$project$Main$body = function (page) {
 			[
 				$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
 				$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$fill),
+				$mdgriffith$elm_ui$Element$scrollbarY,
 				$mdgriffith$elm_ui$Element$padding(10),
 				$mdgriffith$elm_ui$Element$spacing(10)
 			]),
@@ -12175,6 +12437,7 @@ var $author$project$Main$view = function (model) {
 				[
 					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
 					$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$fill),
+					$mdgriffith$elm_ui$Element$scrollbarY,
 					$mdgriffith$elm_ui$Element$Background$image('./discordBackground.png')
 				]),
 			_List_fromArray(

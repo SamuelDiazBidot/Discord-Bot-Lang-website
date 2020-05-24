@@ -47,6 +47,7 @@ body : Page -> Element Msg
 body page =
     row [ width fill 
         , height fill
+        , scrollbarY
         , padding 10
         , spacing 10
         ]
@@ -115,7 +116,6 @@ contentPanel page =
         column 
             [ height fill
             , width <| fillPortion 3
-            , scrollbarY
             , padding 10
             , spacing 10
             , Background.color darkGrey
@@ -166,7 +166,7 @@ type alias Model =
 
 init : Model
 init =
-  { currentPage = About }
+  { currentPage = Home }
   
 type Msg
     = ChangeContent Page
@@ -189,6 +189,7 @@ view model =
     layout [] <|
         column [ width fill
                , height fill
+               , scrollbarY
                , Background.image "./discordBackground.png"
                ]
             [ header

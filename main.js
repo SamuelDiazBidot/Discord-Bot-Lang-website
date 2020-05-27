@@ -4392,8 +4392,8 @@ var _Bitwise_shiftRightZfBy = F2(function(offset, a)
 {
 	return a >>> offset;
 });
-var $author$project$Main$Home = 0;
-var $author$project$Main$init = {aq: 0};
+var $author$project$Main$About = 1;
+var $author$project$Main$init = {aq: 1};
 var $elm$core$Basics$EQ = 1;
 var $elm$core$Basics$GT = 2;
 var $elm$core$Basics$LT = 0;
@@ -5206,7 +5206,7 @@ var $author$project$Main$update = F2(
 			{aq: page});
 	});
 var $author$project$Main$content = _List_fromArray(
-	['Home', 'About', 'Examples', 'Tutorial', 'Contact']);
+	['About', 'Examples', 'Tutorial', 'Contact']);
 var $author$project$Main$ChangeContent = $elm$core$Basics$identity;
 var $mdgriffith$elm_ui$Internal$Model$Rgba = F4(
 	function (a, b, c, d) {
@@ -11069,9 +11069,9 @@ var $mdgriffith$elm_ui$Element$Border$rounded = function (radius) {
 };
 var $mdgriffith$elm_ui$Internal$Flag$overflow = $mdgriffith$elm_ui$Internal$Flag$flag(20);
 var $mdgriffith$elm_ui$Element$scrollbarY = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$overflow, $mdgriffith$elm_ui$Internal$Style$classes.cQ);
-var $author$project$Main$About = 1;
 var $author$project$Main$Contact = 4;
 var $author$project$Main$Examples = 2;
+var $author$project$Main$Home = 0;
 var $author$project$Main$Tutorial = 3;
 var $author$project$Main$stringToPage = function (string) {
 	switch (string) {
@@ -11206,6 +11206,43 @@ var $mdgriffith$elm_ui$Element$image = F2(
 						$mdgriffith$elm_ui$Internal$Model$Unkeyed(_List_Nil))
 					])));
 	});
+var $elm$html$Html$Attributes$href = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'href',
+		_VirtualDom_noJavaScriptUri(url));
+};
+var $elm$html$Html$Attributes$rel = _VirtualDom_attribute('rel');
+var $mdgriffith$elm_ui$Element$link = F2(
+	function (attrs, _v0) {
+		var url = _v0.dk;
+		var label = _v0.cz;
+		return A4(
+			$mdgriffith$elm_ui$Internal$Model$element,
+			$mdgriffith$elm_ui$Internal$Model$asEl,
+			$mdgriffith$elm_ui$Internal$Model$NodeName('a'),
+			A2(
+				$elm$core$List$cons,
+				$mdgriffith$elm_ui$Internal$Model$Attr(
+					$elm$html$Html$Attributes$href(url)),
+				A2(
+					$elm$core$List$cons,
+					$mdgriffith$elm_ui$Internal$Model$Attr(
+						$elm$html$Html$Attributes$rel('noopener noreferrer')),
+					A2(
+						$elm$core$List$cons,
+						$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$shrink),
+						A2(
+							$elm$core$List$cons,
+							$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$shrink),
+							A2(
+								$elm$core$List$cons,
+								$mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.ao + (' ' + ($mdgriffith$elm_ui$Internal$Style$classes.E + (' ' + $mdgriffith$elm_ui$Internal$Style$classes.a9)))),
+								attrs))))),
+			$mdgriffith$elm_ui$Internal$Model$Unkeyed(
+				_List_fromArray(
+					[label])));
+	});
 var $mdgriffith$elm_ui$Internal$Model$Paragraph = {$: 9};
 var $mdgriffith$elm_ui$Internal$Model$SpacingStyle = F3(
 	function (a, b, c) {
@@ -11315,6 +11352,18 @@ var $author$project$Content$aboutContent = _List_fromArray(
 		$author$project$Content$contentAttributes,
 		_List_fromArray(
 			[
+				A2(
+				$mdgriffith$elm_ui$Element$link,
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$Font$color($author$project$Pallete$white),
+						A2($mdgriffith$elm_ui$Element$paddingXY, 60, 10),
+						$mdgriffith$elm_ui$Element$Font$heavy
+					]),
+				{
+					cz: $mdgriffith$elm_ui$Element$text('Click to view video presentation'),
+					dk: 'https://github.com/SamuelDiazBidot/Discord-Bot-Lang'
+				}),
 				$author$project$Content$section('Purpose'),
 				A2(
 				$mdgriffith$elm_ui$Element$paragraph,
@@ -11347,7 +11396,7 @@ var $author$project$Content$aboutContent = _List_fromArray(
 					]),
 				_List_fromArray(
 					[
-						$mdgriffith$elm_ui$Element$text('\n                Discord bot lang\'s interpreter takes an input file and procceses its contents to generate intermidiate code.\n                The lexer divides the contents of the input file into tokens. Tokens are categorized as keywords such as \'if\' and \'else\', types such as \'Integers\' and symbols such as \'+\'.\n                The tokens are then grouped tougether to fit the grammar rules. The end result of parsing the tokens is a asbstract syntax tree, AST for short.\n                Using the generated AST the interpreter can generate python code. \n                Finaly the interpreter runs the generated python code using Discord.py, a library that wraps the discod api.\n                The following flow diagram show the proccess.\n                ')
+						$mdgriffith$elm_ui$Element$text('\n                Discord bot lang\'s interpreter takes an input file and procceses its contents to generate intermidiate code.\n                The lexer divides the contents of the input file into tokens. Tokens are categorized as keywords such as \'if\' and \'else\', types such as \'Integers\' and symbols such as \'+\'.\n                The tokens are then grouped together to fit the grammar rules. The end result of parsing the tokens is a asbstract syntax tree, AST for short.\n                Using the generated AST the interpreter can generate python code. \n                Finaly the interpreter runs the generated python code using Discord.py, a library that wraps the discord api.\n                The following flow diagram show the proccess.\n                ')
 					])),
 				A2(
 				$mdgriffith$elm_ui$Element$image,
@@ -11544,7 +11593,7 @@ var $author$project$Content$examplesContent = _List_fromArray(
 					]),
 				_List_fromArray(
 					[
-						$mdgriffith$elm_ui$Element$text('\n                The following code is a bot that acts like a counter. \n                It has tree commands, one increments the counter, another one decrements it and the last one show the counter amount.\n                ')
+						$mdgriffith$elm_ui$Element$text('\n                The following code is a bot that acts like a counter. \n                It has 3 commands, one increments the counter, another one decrements it and the last one show the counter amount.\n                ')
 					])),
 				A2(
 				$mdgriffith$elm_ui$Element$column,
@@ -11704,7 +11753,7 @@ var $author$project$Content$homeContent = _List_fromArray(
 					]),
 				_List_fromArray(
 					[
-						$mdgriffith$elm_ui$Element$text('sdd')
+						$mdgriffith$elm_ui$Element$text('')
 					]))
 			]))
 	]);
@@ -11738,7 +11787,7 @@ var $author$project$Content$tutorialContent = _List_fromArray(
 					]),
 				_List_fromArray(
 					[
-						$mdgriffith$elm_ui$Element$text('\n                A functional program is coposed of 2 parts, a token and a command. Only one token is needed to write a functional program. \n                The token must be a valid. To obtain a valid token refer to the dicord developer portal. \n                At least one comman is needed, but you can use as many commands as you like.\n                A program also can be composed of variables and functions but these are optional.\n                ')
+						$mdgriffith$elm_ui$Element$text('\n                A functional program is composed of 2 parts, a token and a command. Only one token is needed to write a functional program. \n                The token must be a valid. To obtain a valid token refer to the discord developer portal. \n                At least one command is needed, but you can use as many commands as you like.\n                A program also can be composed of variables and functions but these are optional.\n                ')
 					])),
 				A2(
 				$mdgriffith$elm_ui$Element$column,
@@ -11780,7 +11829,7 @@ var $author$project$Content$tutorialContent = _List_fromArray(
 					]),
 				_List_fromArray(
 					[
-						$mdgriffith$elm_ui$Element$text('\n                Variables can be declared by binding an id to its value using the \'=\' sign.\n                Discord bot lang has support for the following types: Integer, Float, Boolean ans String.\n                Discord bot also supports basic data structures such as lists and hashmaps.  \n                ')
+						$mdgriffith$elm_ui$Element$text('\n                Variables can be declared by binding an id to its value using the \'=\' sign.\n                Discord bot lang has support for the following types: Integer, Float, Boolean and String.\n                Discord bot also supports basic data structures such as lists and hashmaps.  \n                ')
 					])),
 				A2(
 				$mdgriffith$elm_ui$Element$column,
@@ -11812,7 +11861,7 @@ var $author$project$Content$tutorialContent = _List_fromArray(
 						_List_fromArray(
 							['map = ', '{\'a\' : 1, \'b\' : 2}']))
 					])),
-				$author$project$Content$section('flow expressions'),
+				$author$project$Content$section('Flow expressions'),
 				A2(
 				$mdgriffith$elm_ui$Element$paragraph,
 				_List_fromArray(
@@ -11822,7 +11871,7 @@ var $author$project$Content$tutorialContent = _List_fromArray(
 					]),
 				_List_fromArray(
 					[
-						$mdgriffith$elm_ui$Element$text('\n                Discord bot lang supports the following flow expressions: If..else, try..except and for..in loops.\n                ')
+						$mdgriffith$elm_ui$Element$text('\n                Discord bot lang supports the following flow expressions: If..else, try..except and for..in loops. \n                If expression dont need parentheses around the conditional statement.\n                For loops bind an id to the current element in a iterator. The iterator in a for loop can be the range expression defined by two dots in between two integers, or a list.\n                ')
 					])),
 				A2(
 				$mdgriffith$elm_ui$Element$column,
@@ -12095,43 +12144,6 @@ var $author$project$Main$footer = A2(
 		]));
 var $mdgriffith$elm_ui$Internal$Model$Right = 2;
 var $mdgriffith$elm_ui$Element$alignRight = $mdgriffith$elm_ui$Internal$Model$AlignX(2);
-var $elm$html$Html$Attributes$href = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'href',
-		_VirtualDom_noJavaScriptUri(url));
-};
-var $elm$html$Html$Attributes$rel = _VirtualDom_attribute('rel');
-var $mdgriffith$elm_ui$Element$link = F2(
-	function (attrs, _v0) {
-		var url = _v0.dk;
-		var label = _v0.cz;
-		return A4(
-			$mdgriffith$elm_ui$Internal$Model$element,
-			$mdgriffith$elm_ui$Internal$Model$asEl,
-			$mdgriffith$elm_ui$Internal$Model$NodeName('a'),
-			A2(
-				$elm$core$List$cons,
-				$mdgriffith$elm_ui$Internal$Model$Attr(
-					$elm$html$Html$Attributes$href(url)),
-				A2(
-					$elm$core$List$cons,
-					$mdgriffith$elm_ui$Internal$Model$Attr(
-						$elm$html$Html$Attributes$rel('noopener noreferrer')),
-					A2(
-						$elm$core$List$cons,
-						$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$shrink),
-						A2(
-							$elm$core$List$cons,
-							$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$shrink),
-							A2(
-								$elm$core$List$cons,
-								$mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.ao + (' ' + ($mdgriffith$elm_ui$Internal$Style$classes.E + (' ' + $mdgriffith$elm_ui$Internal$Style$classes.a9)))),
-								attrs))))),
-			$mdgriffith$elm_ui$Internal$Model$Unkeyed(
-				_List_fromArray(
-					[label])));
-	});
 var $author$project$Main$header = A2(
 	$mdgriffith$elm_ui$Element$row,
 	_List_fromArray(
@@ -12430,7 +12442,11 @@ var $mdgriffith$elm_ui$Element$layout = $mdgriffith$elm_ui$Element$layoutWith(
 var $author$project$Main$view = function (model) {
 	return A2(
 		$mdgriffith$elm_ui$Element$layout,
-		_List_Nil,
+		_List_fromArray(
+			[
+				$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$fill),
+				$mdgriffith$elm_ui$Element$scrollbarY
+			]),
 		A2(
 			$mdgriffith$elm_ui$Element$column,
 			_List_fromArray(

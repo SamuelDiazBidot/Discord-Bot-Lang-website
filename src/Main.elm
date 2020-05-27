@@ -12,8 +12,7 @@ import Element.Font as Font
 
 content : List String
 content = 
-    [ "Home"
-    , "About"
+    [ "About"
     , "Examples"
     , "Tutorial"
     , "Contact"
@@ -166,7 +165,7 @@ type alias Model =
 
 init : Model
 init =
-  { currentPage = Home }
+  { currentPage = About }
   
 type Msg
     = ChangeContent Page

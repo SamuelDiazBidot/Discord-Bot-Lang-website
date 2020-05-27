@@ -84,7 +84,7 @@ homeContent =
         contentAttributes
         [ paragraph 
             [ Font.color white ]
-            [ Element.text  """sdd""" ]
+            [ Element.text  """""" ]
         ]    
     ]
 
@@ -95,7 +95,11 @@ aboutContent =
         <| Element.text "Discord Bot lang is a dynamically typed language that facilitates the creation of discord bots." 
     , column 
         contentAttributes
-        [ section "Purpose"
+        [ link [Font.color white, paddingXY 60 10, Font.heavy]
+            { url = "https://github.com/SamuelDiazBidot/Discord-Bot-Lang"
+            , label = Element.text "Click to view video presentation"
+            }
+        , section "Purpose"
         , paragraph 
             [ Font.color white, paddingXY 60 10]
             [ Element.text  
@@ -113,9 +117,9 @@ aboutContent =
                 """
                 Discord bot lang's interpreter takes an input file and procceses its contents to generate intermidiate code.
                 The lexer divides the contents of the input file into tokens. Tokens are categorized as keywords such as 'if' and 'else', types such as 'Integers' and symbols such as '+'.
-                The tokens are then grouped tougether to fit the grammar rules. The end result of parsing the tokens is a asbstract syntax tree, AST for short.
+                The tokens are then grouped together to fit the grammar rules. The end result of parsing the tokens is a asbstract syntax tree, AST for short.
                 Using the generated AST the interpreter can generate python code. 
-                Finaly the interpreter runs the generated python code using Discord.py, a library that wraps the discod api.
+                Finaly the interpreter runs the generated python code using Discord.py, a library that wraps the discord api.
                 The following flow diagram show the proccess.
                 """
             ]
@@ -147,7 +151,7 @@ examplesContent =
             [ Element.text 
                 """
                 The following code is a bot that acts like a counter. 
-                It has tree commands, one increments the counter, another one decrements it and the last one show the counter amount.
+                It has 3 commands, one increments the counter, another one decrements it and the last one show the counter amount.
                 """ 
             ]
         , column 
@@ -192,9 +196,9 @@ tutorialContent =
             [ Font.color white, paddingXY 60 10 ]
             [ Element.text  
                 """
-                A functional program is coposed of 2 parts, a token and a command. Only one token is needed to write a functional program. 
-                The token must be a valid. To obtain a valid token refer to the dicord developer portal. 
-                At least one comman is needed, but you can use as many commands as you like.
+                A functional program is composed of 2 parts, a token and a command. Only one token is needed to write a functional program. 
+                The token must be a valid. To obtain a valid token refer to the discord developer portal. 
+                At least one command is needed, but you can use as many commands as you like.
                 A program also can be composed of variables and functions but these are optional.
                 """ 
             ]
@@ -211,7 +215,7 @@ tutorialContent =
             [Element.text 
                 """
                 Variables can be declared by binding an id to its value using the '=' sign.
-                Discord bot lang has support for the following types: Integer, Float, Boolean ans String.
+                Discord bot lang has support for the following types: Integer, Float, Boolean and String.
                 Discord bot also supports basic data structures such as lists and hashmaps.  
                 """
             ]

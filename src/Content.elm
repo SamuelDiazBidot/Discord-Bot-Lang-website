@@ -95,8 +95,8 @@ aboutContent =
         <| Element.text "Discord Bot lang is a dynamically typed language that facilitates the creation of discord bots." 
     , column 
         contentAttributes
-        [ link [Font.color white, paddingXY 60 10, Font.heavy]
-            { url = "https://github.com/SamuelDiazBidot/Discord-Bot-Lang"
+        [ link [Font.color white, paddingXY 60 10, Font.heavy, Font.underline]
+            { url = "https://youtu.be/xpfGZor2Kuw"
             , label = Element.text "Click to view video presentation"
             }
         , section "Purpose"

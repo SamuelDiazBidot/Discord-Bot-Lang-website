@@ -11335,6 +11335,7 @@ var $author$project$Content$ulElement = F2(
 			$mdgriffith$elm_ui$Element$html(
 				A2($elm$html$Html$ul, _List_Nil, liHtml)));
 	});
+var $mdgriffith$elm_ui$Element$Font$underline = $mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.di);
 var $author$project$Content$aboutContent = _List_fromArray(
 	[
 		A2(
@@ -11358,11 +11359,12 @@ var $author$project$Content$aboutContent = _List_fromArray(
 					[
 						$mdgriffith$elm_ui$Element$Font$color($author$project$Pallete$white),
 						A2($mdgriffith$elm_ui$Element$paddingXY, 60, 10),
-						$mdgriffith$elm_ui$Element$Font$heavy
+						$mdgriffith$elm_ui$Element$Font$heavy,
+						$mdgriffith$elm_ui$Element$Font$underline
 					]),
 				{
 					cz: $mdgriffith$elm_ui$Element$text('Click to view video presentation'),
-					dk: 'https://github.com/SamuelDiazBidot/Discord-Bot-Lang'
+					dk: 'https://youtu.be/xpfGZor2Kuw'
 				}),
 				$author$project$Content$section('Purpose'),
 				A2(
